@@ -29,6 +29,19 @@ const ArticleSchema = new mongoose.Schema({
   doi: {
     type: String,
     required: true
+  },
+  method: {
+    type: String,
+    required: true
+  },
+  claim: {
+    type: String
+  },
+  evidence: {
+    type: String
+  },
+  status: {
+    type: String
   }
 });
 
