@@ -8,7 +8,7 @@ import {
 
 import SearchArticle from "./pages/SearchArticle";
 import SubmitForm from "./pages/SubmitForm";
-import Login from "./pages/Login";
+import Admin from "./pages/Admin";
 import NotFoundPage from "./pages/404";
 
 const App = () =>  {
@@ -24,7 +24,7 @@ const App = () =>  {
         <div className="content">
           <Route exact path="/" component={SearchArticle}/>
           <Route  path="/SubmitArticle" component={SubmitForm}/>
-          <Route  path="/Login" component={Login}/>
+          <Route  path="/Admin" component={Admin}/>
           <Route exact path="/404" component={NotFoundPage}/>
           <Redirect to="/404" />
         </div>
