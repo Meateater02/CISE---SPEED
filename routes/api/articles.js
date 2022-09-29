@@ -30,11 +30,28 @@ router.get('/:id', (req, res) => {
 // @route GET api/articles
 // @description add/save article
 // @access Public
-router.post('/', (req, res) => {
-  Article.create(req.body)
-  .then(article => res.json({ msg: 'Article added successfully' }))
-  .catch(err => res.status(400).json({ error: 'Unable to add this article' }));
-  console.log("1233")
+router.post('/', async (req, res) => {
+  try{
+    console.log("article post request", req.body);
+    const newArticle = await Article.create({
+      title: req.body.title,
+      author: req.body.author,
+      journalName: req.body.journalName,
+      year: req.body.year,
+      volume: req.body.volume,
+      number: req.body.number,
+      pages: req.body.pages,
+      doi: req.body.doi,
+      SEmethod: req.body.SEmethod,
+      claim: "",
+      evidence: "",
+      status: "",
+      email: req.body.email
+    })
+    res.send({ newArticle });
+  } catch(err) {
+    res.status(400).send({ error: err });
+  }
 });
 
 // @route GET api/articles/:id
