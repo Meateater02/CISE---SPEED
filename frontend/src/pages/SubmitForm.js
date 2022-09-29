@@ -11,7 +11,7 @@ const SubmitForm = () =>  {
       .post('/api/articles', data)
       .then(res => {
         reset();
-        alert("Successfully passed to db");
+        alert("Successfully submitted!");
       })
       .catch(err => {
         console.log("Error in SubmitForm!");
