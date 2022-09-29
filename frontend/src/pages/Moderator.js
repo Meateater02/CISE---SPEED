@@ -3,7 +3,7 @@ import "../App.css";
 import axios from "axios";
 import Table from "../components/table.js";
 import tablecolumns from "../components/moderatorcolumn.js";
-import Styles from "../components/moderatortablestyle";
+import Styles from "../components/tablestyle";
 
 // import { Link } from 'react-router-dom';
 // import BookCard from './BookCard';
