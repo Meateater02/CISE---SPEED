@@ -3,6 +3,7 @@ import "../App.css";
 import axios from "axios";
 import Table from "../components/table.js";
 import tablecolumns from "../components/admincolumn.js";
+import Styles from "../components/tablestyle";
 
 class Admin extends Component {
   constructor(props) {
@@ -21,7 +22,7 @@ class Admin extends Component {
         });
       })
       .catch((err) => {
-        console.log("Error from Moderator class");
+        console.log("Error from Admin class");
       });
   }
 
@@ -33,7 +34,9 @@ class Admin extends Component {
       <div className="ShowArticleList">
         <div>
           <h2>testing if this works</h2>
-          <Table data={articles} columns={tablecolumns} />
+          <Styles>
+            <Table data={articles} columns={tablecolumns} />
+          </Styles>
         </div>
       </div>
     );
