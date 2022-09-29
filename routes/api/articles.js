@@ -32,8 +32,9 @@ router.get('/:id', (req, res) => {
 // @access Public
 router.post('/', (req, res) => {
   Article.create(req.body)
-    .then(article => res.json({ msg: 'Article added successfully' }))
-    .catch(err => res.status(400).json({ error: 'Unable to add this article' }));
+  .then(article => res.json({ msg: 'Article added successfully' }))
+  .catch(err => res.status(400).json({ error: 'Unable to add this article' }));
+  console.log("1233")
 });
 
 // @route GET api/articles/:id
