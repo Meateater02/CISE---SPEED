@@ -2,47 +2,25 @@
 import React, { useState } from "react";
 import { useForm } from "react-hook-form";
 import axios from 'axios';
+import QS from 'qs';
 // import axios from 'axios';
 
 const SubmitForm = () =>  {
   const { register, handleSubmit } = useForm();
   const [result, setResult] = useState("");
-  const onSubmit = (data) => {
-  console.log(data);
-  const data1 = {
-    title: data.title,
-    author: data.author,
-    journalName: data.journalName,
-    year: data.year,
-    volume: data.volume,
-    pages: data.pages,
-    doi: data.doi,
-    email: data.email,
-    SEmethod: data.SEmethod
-  };
+  const onSubmit = e => {
+
 
   axios
-      .post('/api/articles', data1)
-      .then(res => {
-        data.setState({
-          title: '',
-          author:'',
-          journalName:'',
-          year:'',
-          volume:'',
-          pages:'',
-          doi:'',
-          email:'',
-          SEmethod:'',
-        })
-        data.props.history.push('/');
-      })
-      .catch(err => {
-        console.log("Error in CreateBook!");
-      })
-  console.log("hahaha");
+  .post('http://localhost:5000/api/articles', e)
+  .then(res => {
+    setResult("Submit Successfully")
+   })
+  .catch(err => {
+    console.log("Error in CreateBook!");
+  })
 
-  setResult(JSON.stringify(data))}
+}
   
   
 
@@ -50,42 +28,42 @@ const SubmitForm = () =>  {
     <form onSubmit={handleSubmit(onSubmit)}> 
       <div style={{display: 'flex', flexFlow: 'row', marginBottom: '20px'}}>
       <p style={{marginRight: '10px', width: '20%'}}>Title:</p>
-      <input style={{marginRight: '10px', width: '70%'}} {...register("Title")} placeholder="Title" />     
+      <input style={{marginRight: '10px', width: '70%'}} {...register("title")} placeholder="Title" />     
     </div>
     <div style={{display: 'flex', flexFlow: 'row', marginBottom: '20px'}}>
       <p style={{marginRight: '10px', width: '20%'}}>Authors:</p>
-      <input style={{marginRight: '10px', width: '70%'}} {...register("Authors")} placeholder="Authors" />     
+      <input style={{marginRight: '10px', width: '70%'}} {...register("author")} placeholder="Authors" />     
     </div>
     <div style={{display: 'flex', flexFlow: 'row', marginBottom: '20px'}}>
       <p style={{marginRight: '10px', width: '20%'}}>Journal name:</p>
-      <input style={{marginRight: '10px', width: '70%'}} {...register("Journal name")} placeholder="Journal name" />     
+      <input style={{marginRight: '10px', width: '70%'}} {...register("journalName")} placeholder="Journal name" />     
     </div>
     <div style={{display: 'flex', flexFlow: 'row', marginBottom: '20px'}}>
       <p style={{marginRight: '10px', width: '20%'}}>Year of Publication:</p>
-      <input style={{marginRight: '10px', width: '70%'}} {...register("Publication")} placeholder="Publication Year" />     
+      <input style={{marginRight: '10px', width: '70%'}} {...register("year")} placeholder="Publication Year" />     
     </div>
     <div style={{display: 'flex', flexFlow: 'row', marginBottom: '20px'}}>
       <p style={{marginRight: '10px', width: '10%'}}>Volume:</p>
-      <input style={{marginRight: '10px', width: '18%'}} {...register("Volume")} placeholder="Volume" /> 
+      <input style={{marginRight: '10px', width: '18%'}} {...register("volume")} placeholder="Volume" /> 
       <p style={{marginRight: '10px', width: '10%'}}>Number:</p>
-      <input style={{marginRight: '10px', width: '18%'}} {...register("Number")} placeholder="Number" /> 
+      <input style={{marginRight: '10px', width: '18%'}} {...register("number")} placeholder="Number" /> 
       <p style={{marginRight: '10px', width: '10%'}}>Page:</p>
-      <input style={{marginRight: '10px', width: '18%'}} {...register("Page")} placeholder="Page" />    
+      <input style={{marginRight: '10px', width: '18%'}} {...register("pages")} placeholder="Page" />    
 
 
     </div>
     <div style={{display: 'flex', flexFlow: 'row', marginBottom: '20px'}}>
       <p style={{marginRight: '10px', width: '20%'}}>DOI:</p>
-      <input style={{marginRight: '10px', width: '70%'}} {...register("DOI")} placeholder="DOI" />     
+      <input style={{marginRight: '10px', width: '70%'}} {...register("doi")} placeholder="DOI" />     
     </div>
     <div style={{display: 'flex', flexFlow: 'row', marginBottom: '20px'}}>
       <p style={{marginRight: '10px', width: '20%'}}>Email:</p>
-      <input style={{marginRight: '10px', width: '70%'}} {...register("Email")} placeholder="Email" />     
+      <input style={{marginRight: '10px', width: '70%'}} {...register("email")} placeholder="Email" />     
     </div>
 
     <div style={{display: 'flex', flexFlow: 'row', marginBottom: '10px'}}>
     <p style={{marginRight: '10px', width: '15%'}}>SE method</p>
-      <select {...register("sepractice")}>
+      <select {...register("SEmethod")}>
         <option value="TDD">TDD</option>
         <option value="Mob Programming">Mob Programmin</option>
         <option value="TFD">TFD</option>

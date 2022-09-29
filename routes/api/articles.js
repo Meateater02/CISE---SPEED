@@ -31,10 +31,11 @@ router.get('/:id', (req, res) => {
 // @description add/save article
 // @access Public
 router.post('/', (req, res) => {
+  console.log(req.body);
   Article.create(req.body)
   .then(article => res.json({ msg: 'Article added successfully' }))
   .catch(err => res.status(400).json({ error: 'Unable to add this article' }));
-  console.log("1233")
+  console.log("1234")
 });
 
 // @route GET api/articles/:id
