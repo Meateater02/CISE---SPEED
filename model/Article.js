@@ -3,19 +3,19 @@ const mongoose = require('mongoose');
 const ArticleSchema = new mongoose.Schema({
   title: {
     type: String,
-    required: true
+    // required: true
   },
   author: {
     type: String,
-    required: true
+    // required: true
   },
   journalName: {
     type: String,
-    required: true
+    // required: true
   },
   year: {
     type: Number,
-    required: true
+    // required: true
   },
   volume: {
     type: Number
@@ -24,11 +24,27 @@ const ArticleSchema = new mongoose.Schema({
     type: Number
   },
   pages: {
-    type: Number
+    type: String
   },
   doi: {
     type: String,
-    required: true
+    // required: true
+  },
+  SEmethod: {
+    type: String,
+    // required: true
+  },
+  claim: {
+    type: String
+  },
+  evidence: {
+    type: String
+  },
+  status: {
+    type: String
+  },
+  email: {
+    type: String
   }
 });
 
