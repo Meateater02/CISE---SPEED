@@ -25,7 +25,7 @@ const tablecolumns = [
       accessor: 'doi'
     },{
         Header: 'Method',
-        accessor: 'method'
+        accessor: 'SEmethod'
     },{
       Header: 'Claimed Benefit',
       accessor: 'claim'

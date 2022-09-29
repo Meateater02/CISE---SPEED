@@ -30,7 +30,7 @@ const ArticleSchema = new mongoose.Schema({
     type: String,
     required: true
   },
-  method: {
+  SEmethod: {
     type: String,
     required: true
   },
@@ -41,6 +41,9 @@ const ArticleSchema = new mongoose.Schema({
     type: String
   },
   status: {
+    type: String
+  },
+  email: {
     type: String
   }
 });
