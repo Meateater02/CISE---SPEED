@@ -33,7 +33,7 @@ class Admin extends Component {
     return (
       <div className="ShowArticleList">
         <div>
-          <h2>testing if this works</h2>
+          <h2>Database</h2>
           <Styles>
             <Table data={articles} columns={tablecolumns} />
           </Styles>
