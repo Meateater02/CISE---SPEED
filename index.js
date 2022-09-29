@@ -18,7 +18,7 @@ app.use(express.json({ extended: false }));
 //app.get('/', (req, res) => res.send('Welcome to SPEED!'));
 
 //use Routes
-app.use('/routes/api/articles', articles);
+app.use('/api/articles', articles);
 
 if(process.env.NODE_ENV === "production") {
     app.use(express.static('frontend/build'));

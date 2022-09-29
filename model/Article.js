@@ -29,6 +29,14 @@ const ArticleSchema = new mongoose.Schema({
   doi: {
     type: String,
     required: true
+  },
+  email: {
+    type: String,
+    required: true
+  },
+  SEmethod:{
+    type: String,
+    required:true
   }
 });
 
