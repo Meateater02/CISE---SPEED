@@ -1,8 +1,8 @@
 import React, { Component } from 'react';
 import '../App.css';
 import axios from 'axios';
-import { Link } from 'react-router-dom';
-import BookCard from './BookCard';
+// import { Link } from 'react-router-dom';
+// import BookCard from './BookCard';
 
 class Admin extends Component {
   constructor(props) {
@@ -31,14 +31,14 @@ class Admin extends Component {
     console.log("PrintArticle: " + articles);
     let articleList;
 
-    if(!articles) {
-      articleList = "there is no article record!";
-    } else {
-      articleList = articles.map((article, k) =>
-      //need to change this line below:
-        <BookCard book={article} key={k} />
-      );
-    }
+    // if(!articles) {
+    //   articleList = "there is no article record!";
+    // } else {
+    //   articleList = articles.map((article, k) =>
+    //   //need to change this line below:
+    //     <BookCard book={article} key={k} />
+    //   );
+    // }
 
     return (
       <div className="ShowArticleList">
