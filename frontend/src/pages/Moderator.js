@@ -32,28 +32,13 @@ class Moderator extends Component {
   render() {
     const articles = this.state.articles;
     console.log("PrintArticle: " + articles);
-    let articleList;
 
     return (
       <div className="ShowArticleList">
-        <div className="container">
-          <div className="row">
-            <div className="col-md-12">
-              <br />
-              <h2 className="display-4 text-center">Articles List</h2>
-            </div>
-
-          </div>
-
-          <div className="list">
-                {articleList}
-          </div>
-        </div>
-
         <div>
-        <h2>testing if this works</h2>
-                 <Table data={articles} columns={tablecolumns}/>
-      </div>
+          <h2>Articles</h2>
+          <Table data={articles} columns={tablecolumns}/>
+        </div>
       </div>
     );
   }
