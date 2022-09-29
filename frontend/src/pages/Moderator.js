@@ -1,6 +1,6 @@
-import React, { Component } from 'react';
-import '../App.css';
-import axios from 'axios';
+import React, { Component } from "react";
+import "../App.css";
+import axios from "axios";
 import Table from "../components/table.js";
 import tablecolumns from "../components/admincolumn.js";
 
@@ -11,23 +11,22 @@ class Moderator extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      articles: []
+      articles: [],
     };
   }
 
   componentDidMount() {
     axios
-      .get('/api/articles')
-      .then(res => {
+      .get("/api/articles")
+      .then((res) => {
         this.setState({
-          articles: res.data
-        })
+          articles: res.data,
+        });
       })
-      .catch(err =>{
-        console.log('Error from Moderator class');
-      })
-  };
-
+      .catch((err) => {
+        console.log("Error from Moderator class");
+      });
+  }
 
   render() {
     const articles = this.state.articles;
@@ -36,8 +35,8 @@ class Moderator extends Component {
     return (
       <div className="ShowArticleList">
         <div>
-          <h2>Articles</h2>
-          <Table data={articles} columns={tablecolumns}/>
+          <h2>testing if this works</h2>
+          <Table data={articles} columns={tablecolumns} />
         </div>
       </div>
     );
