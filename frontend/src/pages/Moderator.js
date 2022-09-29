@@ -3,6 +3,7 @@ import "../App.css";
 import axios from "axios";
 import Table from "../components/table.js";
 import tablecolumns from "../components/moderatorcolumn.js";
+import Styles from "../components/tablestyle";
 
 // import { Link } from 'react-router-dom';
 // import BookCard from './BookCard';
@@ -35,8 +36,10 @@ class Moderator extends Component {
     return (
       <div className="ShowArticleList">
         <div>
-          <h2>testing if this works</h2>
-          <Table data={articles} columns={tablecolumns} />
+          <h2>Article List</h2>
+          <Styles>
+            <Table data={articles} columns={tablecolumns} />
+          </Styles>
         </div>
       </div>
     );
