@@ -1,55 +1,45 @@
-const express = require('express');
+const express = require("express");
 const router = express.Router();
 
 // Load Article model
-const Article = require('../../model/Article');
+const Article = require("../../model/Article");
 
 // @route GET api/articles/test
 // @description tests articles route
 // @access Public
-router.get('/test', (req, res) => res.send('article route testing!'));
+router.get("/test", (req, res) => res.send("article route testing!"));
 
 // @route GET api/articles
 // @description Get all articles
 // @access Public
-router.get('/', (req, res) => {
-    Article.find()
-    .then(articles => res.json(articles))
-    .catch(err => res.status(404).json({ noarticlessfound: 'No article found' }));
+router.get("/", (req, res) => {
+  Article.find()
+    .then((articles) => res.json(articles))
+    .catch((err) =>
+      res.status(404).json({ noarticlessfound: "No article found" })
+    );
 });
 
 // @route GET api/articles/:id
 // @description Get single article by id
 // @access Public
-router.get('/:id', (req, res) => {
+router.get("/:id", (req, res) => {
   Article.findById(req.params.id)
-    .then(article => res.json(article))
-    .catch(err => res.status(404).json({ noarticlefound: 'No article found' }));
+    .then((article) => res.json(article))
+    .catch((err) =>
+      res.status(404).json({ noarticlefound: "No article found" })
+    );
 });
 
 // @route GET api/articles
 // @description add/save article
 // @access Public
-router.post('/', async (req, res) => {
-  try{
+router.post("/", async (req, res) => {
+  try {
     console.log("article post request", req.body);
-    const newArticle = await Article.create({
-      title: req.body.title,
-      author: req.body.author,
-      journalName: req.body.journalName,
-      year: req.body.year,
-      volume: req.body.volume,
-      number: req.body.number,
-      pages: req.body.pages,
-      doi: req.body.doi,
-      SEmethod: req.body.SEmethod,
-      claim: "",
-      evidence: "",
-      status: "",
-      email: req.body.email
-    })
+    const newArticle = await Article.create(req.body);
     res.send({ newArticle });
-  } catch(err) {
+  } catch (err) {
     res.status(400).send({ error: err });
   }
 });
@@ -57,21 +47,21 @@ router.post('/', async (req, res) => {
 // @route GET api/articles/:id
 // @description Update article
 // @access Public
-router.put('/:id', (req, res) => {
-    Article.findByIdAndUpdate(req.params.id, req.body)
-    .then(article => res.json({ msg: 'Updated successfully' }))
-    .catch(err =>
-      res.status(400).json({ error: 'Unable to update the Database' })
+router.put("/:id", (req, res) => {
+  Article.findByIdAndUpdate(req.params.id, req.body)
+    .then((article) => res.json({ msg: "Updated successfully" }))
+    .catch((err) =>
+      res.status(400).json({ error: "Unable to update the Database" })
     );
 });
 
 // @route GET api/articles/:id
 // @description Delete article by id
 // @access Public
-router.delete('/:id', (req, res) => {
+router.delete("/:id", (req, res) => {
   Article.findByIdAndRemove(req.params.id, req.body)
-    .then(article => res.json({ mgs: 'Article entry deleted successfully' }))
-    .catch(err => res.status(404).json({ error: 'No such article' }));
+    .then((article) => res.json({ mgs: "Article entry deleted successfully" }))
+    .catch((err) => res.status(404).json({ error: "No such article" }));
 });
 
 module.exports = router;
