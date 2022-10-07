@@ -15,7 +15,7 @@ class SearchArticle extends Component {
 
   componentDidMount() {
     axios
-      .get("/api/articles")
+      .get("/api/articles?status=accepted")
       .then((res) => {
         this.setState({
           articles: res.data,
