@@ -39,19 +39,6 @@ router.get("/:id", (req, res) => {
     );
 });
 
-// router.get("/status/:status", (req, res) => {
-//   console.log("get status", req.body);
-//   Article.find({ status: req.params.status })
-//     .then((article) => res.json(article))
-//     .catch((err) =>
-//       res.status(404).json({ noarticlefound: "No article found" })
-//     );
-// });
-
-// Books.find({ username: "username" }, function (err, course) {
-//   res.json(course);
-// });
-
 // @route GET api/articles
 // @description add/save article
 // @access Public
