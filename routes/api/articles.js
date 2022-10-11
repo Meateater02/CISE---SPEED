@@ -13,11 +13,19 @@ router.get("/test", (req, res) => res.send("article route testing!"));
 // @description Get all articles
 // @access Public
 router.get("/", (req, res) => {
-  Article.find()
-    .then((articles) => res.json(articles))
-    .catch((err) =>
-      res.status(404).json({ noarticlessfound: "No article found" })
-    );
+  if (req.query.status) {
+    Article.find({ status: req.query.status })
+      .then((articles) => res.json(articles))
+      .catch((err) =>
+        res.status(404).json({ noarticlefound: "No article found" })
+      );
+  } else {
+    Article.find()
+      .then((articles) => res.json(articles))
+      .catch((err) =>
+        res.status(404).json({ noarticlefound: "No article found" })
+      );
+  }
 });
 
 // @route GET api/articles/:id

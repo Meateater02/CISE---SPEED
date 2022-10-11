@@ -1,12 +1,46 @@
-import React from "react";
+import React, { Component } from "react";
+import "../App.css";
+import axios from "axios";
+import Table from "../components/table.js";
+import tablecolumns from "../components/searchercolumn.js";
+import Styles from "../components/tablestyle";
 
-const SearchArticle = () =>  {
+class SearchArticle extends Component {
+  constructor(props) {
+    super(props);
+    this.state = {
+      articles: [],
+    };
+  }
+
+  componentDidMount() {
+    axios
+      .get("/api/articles?status=accepted")
+      .then((res) => {
+        this.setState({
+          articles: res.data,
+        });
+      })
+      .catch((err) => {
+        console.log("Error from SearchArticle class");
+      });
+  }
+
+  render() {
+    const articles = this.state.articles;
+    console.log("PrintArticle: " + articles);
+
     return (
-     <div>
-       <h2>Search Article</h2>
-           <p>This will be a table with options for searchers to look up relevant articles according to the SE methods and claims.</p>
-       </div>
-   );
+      <div className="ShowArticleList">
+        <div>
+          <h2>Database</h2>
+          <Styles>
+            <Table data={articles} columns={tablecolumns} />
+          </Styles>
+        </div>
+      </div>
+    );
+  }
 }
 
 export default SearchArticle;
