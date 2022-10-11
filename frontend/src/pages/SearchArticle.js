@@ -4,6 +4,7 @@ import axios from "axios";
 import Table from "../components/table.js";
 import tablecolumns from "../components/searchercolumn.js";
 import Styles from "../components/tablestyle";
+import Dropdown from "../components/Dropdown.js";
 
 class SearchArticle extends Component {
   constructor(props) {
@@ -34,6 +35,7 @@ class SearchArticle extends Component {
       <div className="ShowArticleList">
         <div>
           <h2>Database</h2>
+          <Dropdown/>
           <Styles>
             <Table data={articles} columns={tablecolumns} />
           </Styles>
