@@ -4,15 +4,30 @@ import axios from "axios";
 import Table from "../components/table.js";
 import tablecolumns from "../components/searchercolumn.js";
 import Styles from "../components/tablestyle";
-import Dropdown from "../components/Dropdown.js";
+import Select from "react-select";
+
+const options = [
+  { value: "TDD", label: "TDD" },
+  { value: "Mob Programming", label: "Mob Programming" },
+  { value: "TFD", label: "TFD" },
+  { value: "BDD", label: "BDD" },
+];
 
 class SearchArticle extends Component {
   constructor(props) {
     super(props);
     this.state = {
       articles: [],
+      selectedOption: null,
     };
   }
+
+  //function to handle the drop down list
+  handleChange = (selectedOption) => {
+    this.setState({ selectedOption }, () =>
+      console.log(`Option selected:`, this.state.selectedOption)
+    );
+  };
 
   componentDidMount() {
     axios
@@ -29,15 +44,25 @@ class SearchArticle extends Component {
 
   render() {
     const articles = this.state.articles;
-    console.log("PrintArticle: " + articles);
+
+    const { selectedOption } = this.state;
+
+    //filter the data according to the selected option by the user
+    const filteredArray = this.state.selectedOption
+      ? articles.filter((article) => article.SEmethod === selectedOption.value)
+      : articles;
 
     return (
       <div className="ShowArticleList">
         <div>
           <h2>Database</h2>
-          <Dropdown/>
+          <Select
+            value={this.state.selectedOption}
+            onChange={this.handleChange}
+            options={options}
+          />
           <Styles>
-            <Table data={articles} columns={tablecolumns} />
+            <Table data={filteredArray} columns={tablecolumns} />
           </Styles>
         </div>
       </div>
