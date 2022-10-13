@@ -56,11 +56,13 @@ class SearchArticle extends Component {
       <div className="ShowArticleList">
         <div>
           <h2>Database</h2>
-          <Select
-            value={this.state.selectedOption}
-            onChange={this.handleChange}
-            options={options}
-          />
+          <div data-testid="selectOptionTest">
+            <Select
+              value={this.state.selectedOption}
+              onChange={this.handleChange}
+              options={options}
+            />
+          </div>
           <Styles>
             <Table data={filteredArray} columns={tablecolumns} />
           </Styles>
