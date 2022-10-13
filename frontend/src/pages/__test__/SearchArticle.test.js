@@ -7,7 +7,7 @@ import {
 } from "@testing-library/react";
 import userEvent from "@testing-library/user-event";
 import SubmitForm from "../SubmitForm";
-import SearchArticle from "../SearchArticle";
+import SearchArticle from "./MockReactSelect";
 
 test("fill in the input box to check whether it functions well", () => {
   render(<SubmitForm />);
