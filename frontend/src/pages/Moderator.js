@@ -18,7 +18,7 @@ class Moderator extends Component {
 
   componentDidMount() {
     axios
-      .get("/api/articles")
+      .get("/api/articles?status=moderator")
       .then((res) => {
         this.setState({
           articles: res.data,

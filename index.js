@@ -1,11 +1,11 @@
-const express = require('express');
-const bodyParser = require('body-parser');
-const connectDB = require('./config/db');
-var cors = require('cors');
+const express = require("express");
+const bodyParser = require("body-parser");
+const connectDB = require("./config/db");
+var cors = require("cors");
 
 // routes
-const articles = require('./routes/api/articles');
-const path = require('path');
+const articles = require("./routes/api/articles");
+const path = require("path");
 
 const app = express();
 
@@ -18,24 +18,24 @@ app.use(cors({ origin: true, credentials: true }));
 app.use(express.json({ extended: false }));
 
 app.use(bodyParser.json());
-app.use(bodyParser.urlencoded({extended: true}));
+app.use(bodyParser.urlencoded({ extended: true }));
 
 //app.get('/', (req, res) => res.send('Welcome to SPEED!'));
 
 //use Routes
-app.use('/api/articles', articles);
+app.use("/api/articles", articles);
 
-if(process.env.NODE_ENV === "production") {
-    app.use(express.static('frontend/build'));
+if (process.env.NODE_ENV === "production") {
+  app.use(express.static("frontend/build"));
 
-    app.get('*', (req, res) => {
-        res.sendFile(path.join(__dirname, 'frontend', 'build', 'index.html'))
-    })
+  app.get("*", (req, res) => {
+    res.sendFile(path.join(__dirname, "frontend", "build", "index.html"));
+  });
 } else {
-        app.get('/', (req, res) => {
-            res.send('Api running');
-        })
-    }
+  app.get("/", (req, res) => {
+    res.send("Api running");
+  });
+}
 
 const port = process.env.PORT || 5000;
 

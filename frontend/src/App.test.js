@@ -1,31 +1,56 @@
+import React from "react";
 import { render, screen } from "@testing-library/react";
-// import App from "./App";
-import Table from "./components/table";
-import tablecolumns from "./components/admincolumn";
-import { testData } from "./mockData/testData";
+import App from "./App";
 
-import userEvent from "@testing-library/user-event";
-const { default: SubmitForm } = require("./pages/SubmitForm");
+describe("Base template is rendering without errors", () => {
+  test("name of the software is displayed", async () => {
+    render(<App />);
+    const headingElement = screen.getByText(
+      "Software Practice Empirical Evidence Database (SPEED)"
+    );
+    // screen.debug(headingElement);
+    expect(headingElement).toBeInTheDocument();
+  });
 
-// test("renders learn react link", () => {
-//   render(<App />);
-//   const linkElement = screen.getByText(/learn react/i);
-//   expect(linkElement).toBeInTheDocument();
-// });
+  test("navbar is present", () => {
+    render(<App />);
+    const navbarElement = screen.getByRole("list");
+    // screen.debug(navbarElement);
+    expect(navbarElement).toBeInTheDocument();
+  });
 
-test("fill in the input box to check whether it functions well", () => {
-  render(<SubmitForm />);
-  userEvent.type(screen.getByPlaceholderText(/title/i), "Article Testing Name");
+  test("there are five options in the navbar", () => {
+    render(<App />);
+    const navbarElement = screen.getAllByRole("listitem");
+    expect(navbarElement).toHaveLength(5);
+  });
+
+  test("navlinks are working", () => {
+    render(<App />);
+    // first option
+    expect(screen.getByText("Search Articles").closest("a")).toHaveAttribute(
+      "href",
+      "/"
+    );
+    // second option
+    expect(screen.getByText("Submit an Article").closest("a")).toHaveAttribute(
+      "href",
+      "/SubmitArticle"
+    );
+    // third option
+    expect(screen.getByText("Moderator").closest("a")).toHaveAttribute(
+      "href",
+      "/Moderator"
+    );
+    // fourth option
+    expect(screen.getByText("Analyst").closest("a")).toHaveAttribute(
+      "href",
+      "/Analyst"
+    );
+    // fifth option
+    expect(screen.getByText("Admin").closest("a")).toHaveAttribute(
+      "href",
+      "/Admin"
+    );
+  });
 });
-
-test("submit button is enabled to click", () => {
-  render(<SubmitForm />);
-  expect(screen.getByRole("button", { name: /submit/i })).toBeEnabled();
-});
-
-// test("testing table", () => {
-//   render(<Table columns={tablecolumns} data={testData} />);
-//   expect(screen.getByRole("table")).toHaveLength(1);
-//   expect(screen.getByRole("tr")).toHaveLength(testData.length);
-//   expect(screen.getByRole("th")).toHaveLength(tablecolumns.length);
-// });

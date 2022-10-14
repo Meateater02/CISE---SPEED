@@ -1,7 +1,6 @@
 import React from "react";
-// import React, {useMemo} from "react";
-// import articles from "../dummydata/articles.js";
 import { useTable, useSortBy, usePagination } from "react-table";
+import { Checkbox } from "./checkbox";
 
 const Table = ({ columns, data }) => {
   const {
@@ -9,11 +8,7 @@ const Table = ({ columns, data }) => {
     getTableBodyProps,
     headerGroups,
     prepareRow,
-
-    page, // Instead of using 'rows', we'll use page,
-    // which has only the rows for the active page
-
-    // The rest of these things are super handy, too ;)
+    page,
     canPreviousPage,
     canNextPage,
     pageOptions,
@@ -22,6 +17,8 @@ const Table = ({ columns, data }) => {
     nextPage,
     previousPage,
     setPageSize,
+    allColumns,
+    getToggleHideAllColumnsProps,
     state: { pageIndex, pageSize },
   } = useTable(
     {
@@ -33,19 +30,31 @@ const Table = ({ columns, data }) => {
     useSortBy,
     usePagination
   );
-  // Render Data Table UI
+
   return (
     <>
+      <div>
+        <div>
+          <p>Column Display Selection: </p>
+          <Checkbox {...getToggleHideAllColumnsProps()} /> Toggle All
+        </div>
+        {allColumns.map((column) => (
+          <div key={column.id}>
+            <label>
+              <input type="checkbox" {...column.getToggleHiddenProps()} />
+              {column.Header}
+            </label>
+          </div>
+        ))}
+      </div>
+      <p>Click on table heading to sort</p>
       <table {...getTableProps()}>
         <thead>
           {headerGroups.map((headerGroup) => (
             <tr {...headerGroup.getHeaderGroupProps()}>
               {headerGroup.headers.map((column) => (
-                // Add the sorting props to control sorting. For this example
-                // we can add them into the header props
                 <th {...column.getHeaderProps(column.getSortByToggleProps())}>
                   {column.render("Header")}
-                  {/* Add a sort direction indicator */}
                   <span>
                     {column.isSorted
                       ? column.isSortedDesc

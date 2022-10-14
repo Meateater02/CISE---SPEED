@@ -7,6 +7,9 @@ const SubmitForm = () => {
   const onSubmit = (data) => {
     console.log("onSubmit", data);
 
+    //set the status to moderator so all submitted articles pass to moderators
+    data.status = "moderator";
+
     axios
       .post("/api/articles", data)
       .then((res) => {
