@@ -1,28 +1,32 @@
 import { render, screen } from "@testing-library/react";
-// import App from "./App";
-import Table from "./components/table";
-import tablecolumns from "./components/admincolumn";
-import { testData } from "./mockData/testData";
+import App from "./App";
 
-import userEvent from "@testing-library/user-event";
-const { default: SubmitForm } = require("./pages/SubmitForm");
+describe("Base template is rendering without errors", () => {
+  test("name of the software is displayed", async () => {
+    render(<App />);
+    const headingElement = screen.getByText(
+      "Software Practice Empirical Evidence Database (SPEED)"
+    );
+    // screen.debug(headingElement);
+    expect(headingElement).toBeInTheDocument();
+  });
 
-// test("renders learn react link", () => {
-//   render(<App />);
-//   const linkElement = screen.getByText(/learn react/i);
-//   expect(linkElement).toBeInTheDocument();
-// });
+  test("name of the software is displayed", async () => {
+    render(<App />);
+    const headingElement = screen.getAllByRole("heading");
+    // screen.debug(headingElement);
+    expect(headingElement).toBeTruthy();
+  });
 
-test("fill in the input box to check whether it functions well", () => {
-  render(<SubmitForm />);
-  userEvent.type(screen.getByPlaceholderText(/title/i), "Article Testing Name");
+  test("navbar is present", () => {
+    render(<App />);
+    const navbarElement = screen.getByRole("list");
+    // screen.debug(navbarElement);
+    expect(navbarElement).toBeInTheDocument();
+  });
 });
 
-test("submit button is enabled to click", () => {
-  render(<SubmitForm />);
-  expect(screen.getByRole("button", { name: /submit/i })).toBeEnabled();
-});
-
+//due to react-table version, this test will always fail...
 // test("testing table", () => {
 //   render(<Table columns={tablecolumns} data={testData} />);
 //   expect(screen.getByRole("table")).toHaveLength(1);

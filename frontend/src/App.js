@@ -21,7 +21,7 @@ const App = () => {
         <ul className="header">
           <li>
             <NavLink exact to="/">
-              Search an Article
+              Search Articles
             </NavLink>
           </li>
           <li>

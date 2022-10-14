@@ -1,7 +1,7 @@
 import React, { Component } from "react";
 import "../App.css";
 import axios from "axios";
-import Table from "../components/table.js";
+import Table from "../components/hideColumnTable";
 import tablecolumns from "../components/searchercolumn.js";
 import Styles from "../components/tablestyle";
 import Select from "react-select";
@@ -55,8 +55,9 @@ class SearchArticle extends Component {
     return (
       <div className="ShowArticleList">
         <div>
-          <h2>Database</h2>
+          <h2>Search Articles</h2>
           <div data-testid="selectOptionTest">
+            <p>Select a Software Engineering Method</p>
             <Select
               value={this.state.selectedOption}
               onChange={this.handleChange}
