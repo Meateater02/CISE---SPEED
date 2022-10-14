@@ -1,4 +1,4 @@
-import React from 'react';
+import React from "react";
 import { render, screen } from "@testing-library/react";
 import App from "./App";
 
@@ -54,11 +54,3 @@ describe("Base template is rendering without errors", () => {
     );
   });
 });
-
-//due to react-table version, this test will always fail...
-// test("testing table", () => {
-//   render(<Table columns={tablecolumns} data={testData} />);
-//   expect(screen.getByRole("table")).toHaveLength(1);
-//   expect(screen.getByRole("tr")).toHaveLength(testData.length);
-//   expect(screen.getByRole("th")).toHaveLength(tablecolumns.length);
-// });

@@ -1,4 +1,4 @@
-const mongoose = require('mongoose');
+const mongoose = require("mongoose");
 
 const ArticleSchema = new mongoose.Schema({
   title: {
@@ -18,13 +18,13 @@ const ArticleSchema = new mongoose.Schema({
     // required: true
   },
   volume: {
-    type: Number
+    type: Number,
   },
   number: {
-    type: Number
+    type: Number,
   },
   pages: {
-    type: String
+    type: String,
   },
   doi: {
     type: String,
@@ -35,17 +35,17 @@ const ArticleSchema = new mongoose.Schema({
     // required: true
   },
   claim: {
-    type: String
+    type: String,
   },
   evidence: {
-    type: String
+    type: String,
   },
   status: {
-    type: String
+    type: String,
   },
   email: {
-    type: String
-  }
+    type: String,
+  },
 });
 
-module.exports = Article = mongoose.model('article', ArticleSchema);
+module.exports = Article = mongoose.model("article", ArticleSchema);
