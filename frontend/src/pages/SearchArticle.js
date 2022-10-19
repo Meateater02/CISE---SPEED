@@ -29,6 +29,7 @@ class SearchArticle extends Component {
     );
   };
 
+  //get data from mongoDB through axios
   componentDidMount() {
     axios
       .get("/api/articles?status=accepted")
@@ -56,7 +57,7 @@ class SearchArticle extends Component {
       <div className="ShowArticleList">
         <div>
           <h2>Search Articles</h2>
-          <div data-testid="selectOptionTest">
+          <div>
             <p>Select a Software Engineering Method</p>
             <Select
               value={this.state.selectedOption}

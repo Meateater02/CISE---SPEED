@@ -5,9 +5,6 @@ import Table from "../components/table.js";
 import tablecolumns from "../components/moderatorcolumn.js";
 import Styles from "../components/tablestyle";
 
-// import { Link } from 'react-router-dom';
-// import BookCard from './BookCard';
-
 class Moderator extends Component {
   constructor(props) {
     super(props);
@@ -16,6 +13,7 @@ class Moderator extends Component {
     };
   }
 
+  //get data from mongoDB through axios
   componentDidMount() {
     axios
       .get("/api/articles?status=moderator")

@@ -4,12 +4,15 @@ import axios from "axios";
 
 const SubmitForm = () => {
   const { register, handleSubmit, reset } = useForm();
+
+  //function to show form input data
   const onSubmit = (data) => {
     console.log("onSubmit", data);
 
     //set the status to moderator so all submitted articles pass to moderators
     data.status = "moderator";
 
+    //get data from mongoDB through axios
     axios
       .post("/api/articles", data)
       .then((res) => {
@@ -105,7 +108,6 @@ const SubmitForm = () => {
       </div>
 
       <button style={{ marginLeft: "75%", width: "18%", height: "60px" }}>
-        {" "}
         Submit
       </button>
     </form>
