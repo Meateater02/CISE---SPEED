@@ -13,6 +13,7 @@ class Admin extends Component {
     };
   }
 
+  //get data from mongoDB through axios
   componentDidMount() {
     axios
       .get("/api/articles")

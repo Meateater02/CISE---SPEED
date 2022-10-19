@@ -6,6 +6,7 @@ import {
   Redirect,
 } from "react-router-dom";
 
+//import for page files
 import SearchArticle from "./pages/SearchArticle";
 import SubmitForm from "./pages/SubmitForm";
 import Moderator from "./pages/Moderator";
